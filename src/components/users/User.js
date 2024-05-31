@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../api/api";
 import React, { Fragment, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import Repos from "../repos/Repos";
@@ -8,8 +8,8 @@ const User = () => {
   const [repos, setRepos] = useState([]);
   const getUser = async (username) => {
     try {
-      const response = await axios.get(
-        `https://api.github.com/users/${username}`
+      const response = await api.get(
+        `/users/${username}`
       );
       const data = response.data;
       setUser(data);
@@ -23,8 +23,8 @@ const User = () => {
     // Students will write the code to fetch the user's repositories
     // Then display the repositories in the User component
     try {
-      const response = await axios.get(
-        `https://api.github.com/users/${id}/repos`
+      const response = await api.get(
+        `/users/${id}/repos`
       );
       const data = response.data;
       setRepos(data);

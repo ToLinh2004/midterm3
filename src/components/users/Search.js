@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../api/api";
 import React, { useState } from "react";
 import Users from "./Users";
 const Search = () => {
@@ -6,8 +6,8 @@ const Search = () => {
   const [users, setUsers] = useState([]);
   const searchUsers = async (text) => {
     try {
-      const response = await axios.get(
-        `https://api.github.com/search/users?q=${text} `
+      const response = await api.get(
+        `/search/users?q=${text} `
       );
       setUsers(response.data.items);
     } catch (error) {
