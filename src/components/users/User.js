@@ -8,9 +8,7 @@ const User = () => {
   const [repos, setRepos] = useState([]);
   const getUser = async (username) => {
     try {
-      const response = await api.get(
-        `/users/${username}`
-      );
+      const response = await api.get(`/users/${username}`);
       const data = response.data;
       setUser(data);
     } catch (error) {
@@ -23,9 +21,7 @@ const User = () => {
     // Students will write the code to fetch the user's repositories
     // Then display the repositories in the User component
     try {
-      const response = await api.get(
-        `/users/${id}/repos`
-      );
+      const response = await api.get(`/users/${id}/repos`);
       const data = response.data;
       setRepos(data);
     } catch (error) {

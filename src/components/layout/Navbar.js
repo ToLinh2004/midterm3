@@ -1,6 +1,12 @@
 import React from "react";
+import {useState} from "react";
 import { Link } from "react-router-dom";
 const Navbar = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const handleTheme = () => {
+    document.body.className = isDarkMode ? 'bg-light' : 'bg-dark';
+    setIsDarkMode(!isDarkMode);
+  };
   return (
     <nav className="navbar bg-success">
       <h1>
@@ -10,6 +16,7 @@ const Navbar = () => {
         <li>
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
+      <button  onClick={handleTheme} style={{border:'none',backgroundColor:'black',color:'white'}}>{isDarkMode ? 'Dark' : 'Light'}</button>
         </li>
       </ul>
     </nav>
