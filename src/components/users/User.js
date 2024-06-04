@@ -1,14 +1,15 @@
-import api from "../../api/api";
 import React, { Fragment, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import Repos from "../repos/Repos";
+import {apiGetUser, apiGetUserRepos } from "../../api/api.js";
+
 const User = () => {
   const { id } = useParams();
   const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
   const getUser = async (username) => {
     try {
-      const response = await api.get(`/users/${username}`);
+      const response = await apiGetUser(username);
       const data = response.data;
       setUser(data);
     } catch (error) {
@@ -21,7 +22,7 @@ const User = () => {
     // Students will write the code to fetch the user's repositories
     // Then display the repositories in the User component
     try {
-      const response = await api.get(`/users/${id}/repos`);
+      const response = await apiGetUserRepos(id);
       const data = response.data;
       setRepos(data);
     } catch (error) {

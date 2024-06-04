@@ -1,14 +1,13 @@
-import api from "../../api/api";
+
 import React, { useState } from "react";
 import Users from "./Users";
+import { apiSearchUsers } from "../../api/api";
 const Search = () => {
   const [text, setText] = useState("");
   const [users, setUsers] = useState([]);
   const searchUsers = async (text) => {
     try {
-      const response = await api.get(
-        `/search/users?q=${text} `
-      );
+      const response = await apiSearchUsers(text);
       setUsers(response.data.items);
     } catch (error) {
       console.error("Error fetching data:", error);
