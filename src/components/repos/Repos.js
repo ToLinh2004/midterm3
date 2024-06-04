@@ -3,7 +3,7 @@ import RepoItem from "./RepoItem";
 const Repos = ({ repos }) => {
   return (
     <div>
-      <h2>Repositories</h2>
+      <h2 className="text-success large">Repositories</h2>
       {repos.map((repo) => (
         <RepoItem key={repo.id} repo={repo} />
       ))}
