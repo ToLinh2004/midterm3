@@ -1,14 +1,22 @@
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Users from "./Users";
 import { apiSearchUsers } from "../../api/api";
 const Search = () => {
   const [text, setText] = useState("");
   const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const storedResults = localStorage.getItem('searchResults');
+    if (storedResults) {
+      setUsers(JSON.parse(storedResults));
+    }
+  }, []);
   const searchUsers = async (text) => {
     try {
       const response = await apiSearchUsers(text);
       setUsers(response.data.items);
+      localStorage.setItem('searchResults', JSON.stringify(response.data.items));
     } catch (error) {
       console.error("Error fetching data:", error);
     }
