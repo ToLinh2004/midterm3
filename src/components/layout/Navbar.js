@@ -16,7 +16,7 @@ const Navbar = () => {
         <li>
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
-      <button  onClick={handleTheme} style={{border:'none',backgroundColor:'black',color:'white'}}>{isDarkMode ? 'Dark' : 'Light'}</button>
+      <button  onClick={handleTheme} style={{color:'white',borderRadius:'50%',width:'50px',height:'50px',border:'1px solid white'}} className="bg-success">{isDarkMode ? 'Dark' : 'Light'}</button>
         </li>
       </ul>
     </nav>

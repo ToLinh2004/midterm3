@@ -10,5 +10,4 @@ const Repos = ({ repos }) => {
     </div>
   );
 };
-
 export default Repos;

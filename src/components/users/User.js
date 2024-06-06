@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import Repos from "../repos/Repos";
 import {apiGetUser, apiGetUserRepos } from "../../api/api.js";
-
 const User = () => {
   const { id } = useParams();
   const [user, setUser] = useState({});
@@ -25,11 +24,11 @@ const User = () => {
       const response = await apiGetUserRepos(id);
       const data = response.data;
       setRepos(data);
+      console.log(repos)
     } catch (error) {
       console.error("Error fetching repos:", error.message);
     }
   };
-
   useEffect(() => {
     getUser(id);
     getUserRepos(id);
