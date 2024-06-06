@@ -24,7 +24,6 @@ const User = () => {
       const response = await apiGetUserRepos(id);
       const data = response.data;
       setRepos(data);
-      console.log(repos)
     } catch (error) {
       console.error("Error fetching repos:", error.message);
     }
